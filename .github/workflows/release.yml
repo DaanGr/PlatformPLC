@@ -1,0 +1,28 @@
+name: Release
+on:
+  workflow_dispatch: # This is your "Manual Trigger" for the solo release
+    inputs:
+      level:
+        description: "Release level (patch, minor, major)"
+        required: true
+        default: "patch"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # This step would use a tool like 'standard-version' to:
+      # 1. Update package.json
+      # 2. Update AssemblyInfo
+      # 3. Create a Git Tag
+      # 4. Generate CHANGELOG.md
+      - name: Bump Version and Tag
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          npx standard-version --release-as ${{ github.event.inputs.level }}
+          git push --follow-tags origin main

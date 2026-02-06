@@ -1,0 +1,38 @@
+{
+  "name": "platformplc",
+  "version": "1.0.0",
+  "description": "PlatformPLC is a universal, open-source framework designed to bring PLC engineering into the modern software development era. It allows engineers to design hardware-agnostic logic within **VS Code**, leveraging professional software engineering tools such as Git and Language Servers.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky",
+    "format": "prettier --write .",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaanGr/PlatformPLC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/DaanGr/PlatformPLC/issues"
+  },
+  "homepage": "https://github.com/DaanGr/PlatformPLC#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^20.4.1",
+    "@commitlint/config-conventional": "^20.4.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.1"
+  },
+  "lint-staged": {
+    "*.cs": "dotnet format src/PlatformPLC.slnx --include",
+    "*.{ts,tsx,json,md}": "npx prettier --write"
+  }
+}

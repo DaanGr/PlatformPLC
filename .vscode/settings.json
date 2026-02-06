@@ -1,0 +1,18 @@
+{
+  "dotnet.defaultSolution": "src/PlatformPLC.sln",
+  "dotnet.backgroundAnalysis.analyzerScope": "fullSolution",
+  "dotnet.backgroundAnalysis.compilerDiagnosticsScope": "fullSolution",
+  "csharp.showOmnisharpLog": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "eslint.workingDirectories": ["./src/Extension"],
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csdevkit"
+  },
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false
+}

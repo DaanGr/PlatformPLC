@@ -1,0 +1,13 @@
+root = true
+
+[*.cs]
+# Core Severity
+dotnet_analyzer_diagnostic.severity = error
+csharp_style_namespace_declarations = file_scoped:error
+
+# Specific Rule for Unused Variables (CS0219)
+dotnet_diagnostic.CS0219.severity = error
+
+# Formatting
+indent_style = space
+indent_size = 4

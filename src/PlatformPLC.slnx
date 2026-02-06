@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Adapters/">
+    <Project Path="Adapters/PlatformPLC.Adapters.Rockwell/PlatformPLC.Adapters.Rockwell.csproj" />
+    <Project Path="Adapters/PlatformPLC.Adapters.Siemens/PlatformPLC.Adapters.Siemens.csproj" />
+  </Folder>
+  <Folder Name="/Core/">
+    <Project Path="Core/PlatformPLC.Core.Tests/PlatformPLC.Core.Tests.csproj" />
+    <Project Path="Core/PlatformPLC.Core/PlatformPLC.Core.csproj" />
+    <Project Path="Core/PlatformPLC.Server/PlatformPLC.Server.csproj" />
+  </Folder>
+</Solution>

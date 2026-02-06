@@ -1,0 +1,32 @@
+name: CI
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Restore & Build Backend
+        run: |
+          dotnet restore src/PlatformPLC.sln
+          dotnet build src/PlatformPLC.sln --configuration Release
+
+      - name: Run Backend Tests
+        run: dotnet test src/PlatformPLC.sln --no-build --configuration Release
+
+      - name: Build Extension
+        working-directory: ./src/Extension
+        run: |
+          npm install
+          npm run compile
