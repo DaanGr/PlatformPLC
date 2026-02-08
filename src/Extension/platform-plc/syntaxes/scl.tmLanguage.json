@@ -1,7 +1,6 @@
 {
   "name": "SCL",
   "scopeName": "source.scl",
-  "caseInsensitive": true,
   "fileTypes": ["scl"],
   "patterns": [
     {
