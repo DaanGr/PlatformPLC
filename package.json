@@ -10,7 +10,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky",
     "format": "prettier --write .",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test:core": "dotnet test src/PlatformPLC.slnx",
+    "build:server": "dotnet build src/PlatformPLC.slnx",
+    "ext:install": "npm install --prefix src/Extension/platform-plc",
+    "ext:watch": "npm run watch --prefix src/Extension/platform-plc"
   },
   "repository": {
     "type": "git",
