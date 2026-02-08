@@ -14,5 +14,6 @@
     "editor.defaultFormatter": "ms-dotnettools.csdevkit"
   },
   "git.enableSmartCommit": true,
-  "git.confirmSync": false
+  "git.confirmSync": false,
+  "conventionalCommits.scopes": ["extension"]
 }
