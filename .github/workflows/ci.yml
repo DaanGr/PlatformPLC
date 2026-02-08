@@ -23,7 +23,7 @@ jobs:
           dotnet build src/PlatformPLC.sln --configuration Release
 
       - name: Run Backend Tests
-        run: dotnet test src/PlatformPLC.sln --no-build --configuration Release
+        run: dotnet test src/PlatformPLC.slnx --no-build --configuration Release
 
       - name: Build Extension
         working-directory: ./src/Extension
