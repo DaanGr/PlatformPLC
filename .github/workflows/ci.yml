@@ -19,8 +19,8 @@ jobs:
 
       - name: Restore & Build Backend
         run: |
-          dotnet restore src/PlatformPLC.sln
-          dotnet build src/PlatformPLC.sln --configuration Release
+          dotnet restore src/PlatformPLC.slnx
+          dotnet build src/PlatformPLC.slnx --configuration Release
 
       - name: Run Backend Tests
         run: dotnet test src/PlatformPLC.slnx --no-build --configuration Release
