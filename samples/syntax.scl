@@ -1,0 +1,45 @@
+// ==========================================
+// SAMPLE SCL FOR SYNTAX HIGHLIGHTING TEST
+// ==========================================
+
+(* Block comment test:
+   This text should be commented.
+*)
+
+FUNCTION_BLOCK "MyTestBlock"
+VAR_INPUT
+    Start_Motor : BOOL;       // Input variable
+    Speed       : REAL;       // Number with decimal point
+    Timer_Dur   : TIME := T#10s; // Time notation test
+END_VAR
+
+VAR_TEMP
+    Temp_Hex    : WORD := 16#FF01; // Hexadecimal test
+    Binary_Var  : BYTE := 2#1010;  // Optional: Binary test
+END_VAR
+
+BEGIN
+    // Test: Keywords and Operators
+    IF ("Start_Motor" = TRUE) AND (Speed > 50.0) THEN
+        "Output" := Speed * 1.5;
+    ELSIF (Speed <= 10.0) THEN
+        "Output" := 0.0;
+    ELSE
+        "Output" := -1.0;
+    END_IF;
+
+    // Test: Functions and parentheses
+    "Calculated_Result" := ABS(Speed);
+    "Log_Text" := 'Motor has started'; // String test
+
+    (* Test: Nested brackets and complex operators *)
+    IF ( (Speed <> 0.0) OR (Speed < 100.0) ) THEN
+        "Counter" := "Counter" + 1;
+    END_IF;
+
+END_FUNCTION_BLOCK
+
+FOR i := 1 TO 10 DO
+    // Loop test
+    "Loop_Counter" := i;
+END_FOR;

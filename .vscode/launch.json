@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}/src/Extension/platform-plc",
+        "--disable-telemetry"
+      ],
+      "outFiles": ["${workspaceFolder}/src/Extension/platform-plc/dist/**/*.js"]
+    },
+    {
+      "name": "Launch Server",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-backend",
+      "program": "${workspaceFolder}/src/Core/PlatformPLC.Server/bin/Debug/net10.0/PlatformPLC.Server.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/Core/PlatformPLC.Server",
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    },
+    {
+      "name": "Attach to Server",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickProcess}"
+    }
+  ]
+}

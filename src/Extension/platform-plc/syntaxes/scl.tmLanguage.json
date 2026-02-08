@@ -1,0 +1,140 @@
+{
+  "name": "SCL",
+  "scopeName": "source.scl",
+  "fileTypes": ["scl"],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#functions"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#identifiers"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#punctuation"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.scl",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.scl",
+          "begin": "\\(\\*",
+          "end": "\\*\\)"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "support.function.scl",
+          "match": "\\b[A-Za-z_][A-Za-z0-9_]*(?=\\()"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.scl",
+          "match": "\\b(AND|ARRAY|BEGIN|CASE|CONST|DO|ELSE|ELSIF|END|END_IF|END_FOR|END_FUNCTION_BLOCK|END_VAR|EXIT|FOR|FUNCTION_BLOCK|IF|MOD|NOT|OF|OR|REPEAT|RETURN|THEN|TO|TRUE|FALSE|UNTIL|VAR|VAR_INPUT|VAR_OUTPUT|VAR_IN_OUT|VAR_TEMP|WHILE|XOR)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "storage.type.scl",
+          "match": "\\b(BOOL|BYTE|CHAR|DATE|DINT|DT|DWORD|INT|LINT|LREAL|LWORD|REAL|SINT|STRING|TIME|TIME_OF_DAY|TOD|UDINT|UINT|ULINT|USINT|WORD|WSTRING)\\b"
+        }
+      ]
+    },
+    "identifiers": {
+      "patterns": [
+        {
+          "name": "variable.other.readwrite.scl",
+          "match": "\"[^\"]*\""
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.time.scl",
+          "match": "\\b(T|TIME)#[-+]?([0-9dhmms_]+)+\\b"
+        },
+        {
+          "name": "constant.numeric.hex.scl",
+          "match": "\\b16#[0-9a-fA-F]+\\b"
+        },
+        {
+          "name": "constant.numeric.binary.scl",
+          "match": "\\b2#[01_]+\\b"
+        },
+        {
+          "name": "constant.numeric.scl",
+          "match": "\\b\\d+(\\.\\d+)?([eE][+-]?\\d+)?\\b"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.single.scl",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "match": "\\\\.",
+              "name": "constant.character.escape.scl"
+            }
+          ]
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.scl",
+          "match": "(:=|<=|>=|<>|[+\\-*/=<>])"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.parenthesis.scl",
+          "match": "[()]"
+        },
+        {
+          "name": "punctuation.bracket.scl",
+          "match": "[\\[\\]]"
+        },
+        {
+          "name": "punctuation.terminator.scl",
+          "match": ";"
+        }
+      ]
+    }
+  }
+}
