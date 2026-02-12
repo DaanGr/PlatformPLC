@@ -28,10 +28,10 @@ TestResult.xml
 node_modules/
 npm-debug.log
 yarn-error.log
-package-lock.json
 # Keep package-lock.json if you want deterministic builds, 
 # but for libraries sometimes it is excluded. 
 # Usually for apps/extensions we keep it. Leaving it out of ignore.
+# package-lock.json
 
 # Build outputs
 dist/
