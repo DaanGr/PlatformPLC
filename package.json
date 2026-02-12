@@ -1,6 +1,6 @@
 {
   "name": "platformplc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "PlatformPLC is a universal, open-source framework designed to bring PLC engineering into the modern software development era. It allows engineers to design hardware-agnostic logic within **VS Code**, leveraging professional software engineering tools such as Git and Language Servers.",
   "main": "index.js",
   "directories": {
