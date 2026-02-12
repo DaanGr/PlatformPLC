@@ -2,12 +2,12 @@
   "If Statement": {
     "prefix": "IF",
     "body": ["IF ${1:condition} THEN", "\t$0", "END_IF;"],
-    "description": "Logic for a IF statement"
+    "description": "Logic for an IF statement"
   },
   "If Else Statement": {
     "prefix": "IFELSE",
     "body": ["IF ${1:condition} THEN", "\t$2", "ELSE", "\t$0", "END_IF;"],
-    "description": "Logic for a IF-ELSE statement"
+    "description": "Logic for an IF-ELSE statement"
   },
   "IF ELSEIF Statement": {
     "prefix": "IFELSEIF",
@@ -20,7 +20,7 @@
       "\t$0",
       "END_IF;"
     ],
-    "description": "Logic for a IF-ELSEIF statement"
+    "description": "Logic for an IF-ELSEIF statement"
   },
   "For Loop": {
     "prefix": "FOR",
