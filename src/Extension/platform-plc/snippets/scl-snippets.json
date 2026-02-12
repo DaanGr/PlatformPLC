@@ -1,0 +1,227 @@
+{
+  "If Statement": {
+    "prefix": "IF",
+    "body": ["IF ${1:condition} THEN", "\t$0", "END_IF;"],
+    "description": "Logic for a IF statement"
+  },
+  "If Else Statement": {
+    "prefix": "IFELSE",
+    "body": ["IF ${1:condition} THEN", "\t$2", "ELSE", "\t$0", "END_IF;"],
+    "description": "Logic for a IF-ELSE statement"
+  },
+  "IF ELSEIF Statement": {
+    "prefix": "IFELSEIF",
+    "body": [
+      "IF ${1:condition} THEN",
+      "\t$2",
+      "ELSIF ${3:condition} THEN",
+      "\t$4",
+      "ELSE",
+      "\t$0",
+      "END_IF;"
+    ],
+    "description": "Logic for a IF-ELSEIF statement"
+  },
+  "For Loop": {
+    "prefix": "FOR",
+    "body": ["FOR ${1:i} := ${2:start} TO ${3:end} DO", "\t$0", "END_FOR;"]
+  },
+  "Case": {
+    "prefix": "CASE",
+    "body": [
+      "CASE ${1:variable} OF",
+      "\t${2:1}:",
+      "\t\t$0",
+      "ELSE:",
+      "\t\t;",
+      "END_CASE;"
+    ]
+  },
+  "While Loop": {
+    "prefix": "WHILE",
+    "body": ["WHILE ${1:condition} DO", "\t$0", "END_WHILE;"]
+  },
+  "On-Delay Timer (TON)": {
+    "prefix": "TON",
+    "body": [
+      "\"${1:InstTimer}\".TON(IN := ${2:condition},",
+      "              PT := ${3:T#10s},",
+      "              Q => ${4:output},",
+      "              ET => ${5:elapsed});"
+    ],
+    "description": "IEC Timer: On-Delay"
+  },
+  "Off-Delay Timer (TOF)": {
+    "prefix": "TOF",
+    "body": [
+      "\"${1:InstTimer}\".TOF(IN := ${2:condition},",
+      "              PT := ${3:T#10s},",
+      "              Q => ${4:output},",
+      "              ET => ${5:elapsed});"
+    ],
+    "description": "IEC Timer: Off-Delay"
+  },
+  "Positive Edge": {
+    "prefix": "R_TRIG",
+    "body": [
+      "\"${1:InstEdge}\".R_TRIG(CLK := ${2:signal},",
+      "                Q => ${3:edge_detected});"
+    ],
+    "description": "Detection of a rising edge"
+  },
+  "Negative Edge": {
+    "prefix": "F_TRIG",
+    "body": [
+      "\"${1:InstEdge}\".F_TRIG(CLK := ${2:signal},",
+      "                Q => ${3:edge_detected});"
+    ],
+    "description": "Detection of a falling edge"
+  },
+  "Region": {
+    "prefix": "REGION",
+    "body": ["REGION ${1:Description}", "\t$0", "END_REGION"],
+    "description": "Create a foldable code region"
+  },
+  "Assignment True": {
+    "prefix": "TRUE Assignment",
+    "body": ["${1:variable} := TRUE;"],
+    "description": "Assign TRUE to a variable"
+  },
+  "TRUE": {
+    "prefix": "TRUE",
+    "body": ["TRUE"],
+    "description": "Boolean TRUE value"
+  },
+  "Assignment False": {
+    "prefix": "FALSE Assignment",
+    "body": ["${1:variable} := FALSE;"],
+    "description": "Assign FALSE to a variable"
+  },
+  "FALSE": {
+    "prefix": "FALSE",
+    "body": ["FALSE"],
+    "description": "Boolean FALSE value"
+  },
+  "Return": {
+    "prefix": "RETURN",
+    "body": ["RETURN;"],
+    "description": "Exit the current block"
+  },
+  "Absolute Value": {
+    "prefix": "ABS",
+    "body": ["${1:output} := ABS(${2:input});"],
+    "description": "Returns the absolute value of a numeric input"
+  },
+  "Square Root": {
+    "prefix": "SQRT",
+    "body": ["${1:output} := SQRT(${2:input});"],
+    "description": "Calculates the square root"
+  },
+  "Scale Linear (LSCALE)": {
+    "prefix": "LSCALE",
+    "body": [
+      "// Linear scaling: y = ax + b",
+      "${1:out_val} := (${2:in_val} - ${3:in_min}) / (${4:in_max} - ${3:in_min}) * (${5:out_max} - ${6:out_min}) + ${6:out_min};"
+    ],
+    "description": "Basic linear scaling formula"
+  },
+  "Integer to Real": {
+    "prefix": "INT_TO_REAL",
+    "body": ["${1:real_var} := INT_TO_REAL(${2:int_var});"],
+    "description": "Convert INT to REAL"
+  },
+  "Real to Integer": {
+    "prefix": "REAL_TO_INT",
+    "body": ["${1:int_var} := REAL_TO_INT(${2:real_var});"],
+    "description": "Convert REAL to INT (Rounding)"
+  },
+  "Move Block": {
+    "prefix": "MOVE_BLK",
+    "body": [
+      "MOVE_BLK(IN := ${1:src_array},",
+      "         COUNT := ${2:number},",
+      "         OUT => ${3:dest_array});"
+    ],
+    "description": "Move a block of data between arrays"
+  },
+  "Fill Block": {
+    "prefix": "FILL_BLK",
+    "body": [
+      "FILL_BLK(IN := ${1:value},",
+      "         COUNT := ${2:number},",
+      "         OUT => ${3:dest_array});"
+    ],
+    "description": "Fill an array with a specific value"
+  },
+  "Get System Time": {
+    "prefix": "RD_SYS_T",
+    "body": ["#${1:temp_int} := RD_SYS_T(${2:dt_variable});"],
+    "description": "Read the CPU system time"
+  },
+  "Limit": {
+    "prefix": "LIMIT",
+    "body": [
+      "${1:output} := LIMIT(MN := ${2:min}, IN := ${3:input}, MX := ${4:max});"
+    ],
+    "description": "Limit the input value between min and max"
+  },
+  "ISA-S88 State Machine": {
+    "prefix": "S88",
+    "body": [
+      "CASE ${1:#iState} OF",
+      "\t10: // IDLE",
+      "\t\tIF ${2:#cmdStart} THEN",
+      "\t\t\t${1:#iState} := 20; // STARTING",
+      "\t\tEND_IF;",
+      "",
+      "\t20: // STARTING",
+      "\t\t$3",
+      "\t\tIF ${4:#startingDone} THEN",
+      "\t\t\t${1:#iState} := 30; // RUNNING",
+      "\t\tEND_IF;",
+      "",
+      "\t30: // RUNNING",
+      "\t\t$0",
+      "\t\tIF ${5:#cmdHold} THEN",
+      "\t\t\t${1:#iState} := 40; // HOLDING",
+      "\t\tELSIF ${6:#runningDone} THEN",
+      "\t\t\t${1:#iState} := 70; // COMPLETING",
+      "\t\tEND_IF;",
+      "",
+      "\t40: // HOLDING",
+      "\t\tIF ${7:#holdingDone} THEN",
+      "\t\t\t${1:#iState} := 50; // HELD",
+      "\t\tEND_IF;",
+      "",
+      "\t50: // HELD",
+      "\t\tIF ${8:#cmdRestart} THEN",
+      "\t\t\t${1:#iState} := 60; // RESTARTING",
+      "\t\tEND_IF;",
+      "",
+      "\t60: // RESTARTING",
+      "\t\tIF ${9:#restartingDone} THEN",
+      "\t\t\t${1:#iState} := 30; // RUNNING",
+      "\t\tEND_IF;",
+      "",
+      "\t70: // COMPLETING",
+      "\t\tIF ${10:#completingDone} THEN",
+      "\t\t\t${1:#iState} := 80; // COMPLETED",
+      "\t\tEND_IF;",
+      "",
+      "\t80: // COMPLETED",
+      "\t\tIF ${11:#cmdReset} THEN",
+      "\t\t\t${1:#iState} := 10; // IDLE",
+      "\t\tEND_IF;",
+      "",
+      "\t90: // ABORTING",
+      "\t\t${1:#iState} := 100; // ABORTED",
+      "",
+      "\t100: // ABORTED",
+      "\t\tIF ${11:#cmdReset} THEN",
+      "\t\t\t${1:#iState} := 10; // IDLE",
+      "\t\tEND_IF;",
+      "END_CASE;"
+    ],
+    "description": "ISA-S88 Procedural State Model structure"
+  }
+}

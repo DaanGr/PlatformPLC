@@ -6,19 +6,7 @@
    This text should be commented.
 *)
 
-FUNCTION_BLOCK "MyTestBlock"
-VAR_INPUT
-    Start_Motor : BOOL;       // Input variable
-    Speed       : REAL;       // Number with decimal point
-    Timer_Dur   : TIME := T#10s; // Time notation test
-END_VAR
 
-VAR_TEMP
-    Temp_Hex    : WORD := 16#FF01; // Hexadecimal test
-    Binary_Var  : BYTE := 2#1010;  // Optional: Binary test
-END_VAR
-
-BEGIN
     // Test: Keywords and Operators
     IF ("Start_Motor" = TRUE) AND (Speed > 50.0) THEN
         "Output" := Speed * 1.5;
@@ -37,9 +25,87 @@ BEGIN
         "Counter" := "Counter" + 1;
     END_IF;
 
-END_FUNCTION_BLOCK
+
 
 FOR i := 1 TO 10 DO
     // Loop test
     "Loop_Counter" := i;
 END_FOR;
+
+IF condition THEN
+    
+END_IF;
+
+IF condition THEN
+    
+ELSE
+    
+END_IF;
+
+CASE variable OF
+    1:
+        
+ELSE:
+        ;
+END_CASE; if
+
+FOR i := start TO end DO
+    
+END_FOR;
+REGION Description
+    RETURN;
+END_REGION
+
+CASE #iState OF
+    10: // IDLE
+        IF #cmdStart THEN
+            #iState := 20; // STARTING
+        END_IF;
+
+    20: // STARTING
+        
+        IF #startingDone THEN
+            #iState := 30; // RUNNING
+        END_IF;
+
+    30: // RUNNING
+        
+        IF #cmdHold THEN
+            #iState := 40; // HOLDING
+        ELSIF #runningDone THEN
+            #iState := 70; // COMPLETING
+        END_IF;
+
+    40: // HOLDING
+        IF #holdingDone THEN
+            #iState := 50; // HELD
+        END_IF;
+
+    50: // HELD
+        IF #cmdRestart THEN
+            #iState := 60; // RESTARTING
+        END_IF;
+
+    60: // RESTARTING
+        IF #restartingDone THEN
+            #iState := 30; // RUNNING
+        END_IF;
+
+    70: // COMPLETING
+        IF #completingDone THEN
+            #iState := 80; // COMPLETED
+        END_IF;
+
+    80: // COMPLETED
+        IF #cmdReset THEN
+            #iState := 10; // IDLE
+        END_IF;
+
+    90: // ABORTING
+        #iState := 100; // ABORTED
+
+    100: // ABORTED
+        IF #cmdReset THEN
+            #iState := 10; // IDLE
+        END_IF;
+END_CASE;
