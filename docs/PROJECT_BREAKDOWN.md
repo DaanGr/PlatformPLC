@@ -2,10 +2,10 @@
 
 ## 1. Extension Foundation
 
-- [ ] **SCL Syntax Highlighting** (TextMate)
-  - [ ] Configure `package.json` for `.scl` language.
-  - [ ] Define Basic Tokens (Keywords, Types, Operators).
-  - [ ] Create TextMate grammar (`syntaxes/scl.tmLanguage.json`).
+- [x] **SCL Syntax Highlighting** (TextMate)
+  - [x] Configure `package.json` for `.scl` language.
+  - [x] Define Basic Tokens (Keywords, Types, Operators).
+  - [x] Create TextMate grammar (`syntaxes/scl.tmLanguage.json`).
 - [ ] **SCL Snippets**
   - [ ] Add common control structures (IF, FOR, CASE, etc.).
 - [ ] **LSP Client Setup**

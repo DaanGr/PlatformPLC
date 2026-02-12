@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     # CRUCIAAL: Voeg dit toe om de 403 error op te lossen
     permissions:
-      contents: write 
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -24,16 +24,41 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
+          node-version: "lts/*"
 
-      - name: Bump Version and Tag
+      - name: Bump Version and Push Tag
         run: |
-          # Als je wilt dat de commit op jouw naam staat, vervang dit door je eigen info:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          
-          # Voer de release uit
+
+          # 1. Bepaal de nieuwe versie met standard-version (zonder auto-push)
           npx standard-version --release-as ${{ github.event.inputs.level }}
-          
-          # Push de wijzigingen en de nieuwe tag
+
+          # 2. Haal de nieuwe versie op uit de root package.json
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "New version: $NEW_VERSION"
+
+          # 3. Update de versie in de extensie package.json
+          # Gebruik npm version om de versie in de submap te zetten
+          (cd src/Extension/platform-plc && npm version $NEW_VERSION --no-git-tag-version --allow-same-version)
+
+          # 4. Commit de wijziging in de extensie file ook mee (amend de laatste commit van standard-version)
+          git add src/Extension/platform-plc/package.json
+          git commit --amend --no-edit
+
+          # 5. Push de wijzigingen en de nieuwe tag
           git push --follow-tags origin main
+
+      - name: Publish Extension
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        run: |
+          cd src/Extension/platform-plc
+          npm ci
+
+          # Installeer vsce
+          npm install -g @vscode/vsce
+
+          # Publiceer de extensie
+          # De '--pat' flag is nodig als de omgevingsvariabele VSCE_PAT niet automatisch wordt opgepikt (soms wel/niet afhankelijk van vsce versie, expliciet is veiliger)
+          vsce publish -p $VSCE_PAT
