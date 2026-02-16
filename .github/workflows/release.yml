@@ -51,7 +51,7 @@ jobs:
 
       - name: Publish Extension
         env:
-          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+          VSCE_PAT: ${{ secrets.VSCE_TOKEN }}
         run: |
           cd src/Extension/platform-plc
           npm ci
