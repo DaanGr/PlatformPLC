@@ -1,71 +1,61 @@
-# platform-plc README
+# PlatformPLC
 
-This is the README for your extension "platform-plc". After writing up a brief description, we recommend including the following sections.
-
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-- `myExtension.enable`: Enable/disable this extension.
-- `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+PlatformPLC is a universal, open-source framework designed to bring PLC engineering into the modern software development era. It allows engineers to design hardware-agnostic logic within **VS Code**, leveraging professional software engineering tools such as Git and Language Servers.
 
 ---
 
-## Following extension guidelines
+## Vision
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+Industrial automation has long been confined to heavy, proprietary vendor software. PlatformPLC acts as an **Abstraction Layer** above industrial standards. Write your code once in a modern IDE and deploy it to various hardware platforms, including **Siemens S7** and **Allen Bradley Logix**.
 
-- [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+---
 
-## Working with Markdown
+## Architecture
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+The system is built on a three-tier model to ensure modularity and scalability:
 
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-- Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-- Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+1. **The Core (C# .NET):** The central intelligence of the platform. It hosts the **Language Server Protocol (LSP)**, the **Code Formatter**, and the **Sync Engine**.
+2. **Vendor Adapters:** Modular drivers that translate neutral logic into hardware-specific formats:
+   - **Siemens Adapter:** Interfaces with TIA Portal Openness API for block injection and project management.
+   - **Rockwell Adapter:** Utilizes the Logix Designer SDK and manipulates L5X (XML) files for Studio 5000 integration.
 
-## For more information
+3. **VS Code Extension:** A lightweight frontend that manages the connection to the Core and hosts visual editors (SFC/LAD) via Webviews.
 
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+---
 
-**Enjoy!**
+## Core Features
+
+### 1. Universal Language Server (LSP)
+
+PlatformPLC provides full IDE intelligence for SCL (Siemens) and ST (Allen Bradley):
+
+- **Auto-complete:** Suggestions based on live or cached Tag tables and UDT structures.
+- **Go-to-Definition:** Instant navigation from a block call to its source definition.
+- **Real-time Diagnostics:** Syntax validation powered by an ANTLR4-based C# parser.
+
+### 2. Visual Logic Designers (SFC & LAD)
+
+Design graphical logic directly within VS Code:
+
+- **SFC Editor:** A visual tool for designing sequences that are transpiled into optimized SCL/ST `CASE` structures.
+- **LAD Editor:** A graphical interface for Ladder Diagramming, utilizing the C# Core for network validation and XML generation.
+
+### 3. Git-Centric Workflow
+
+Move away from comparing binary project files. PlatformPLC exports every block, tag table, and UDT as a plain text file.
+
+- Perform granular code reviews with `git diff`.
+- Enable multi-user collaboration without merge conflicts in proprietary databases.
+
+---
+
+## Installation
+
+Search for "PlatformPLC" in the VS Code Marketplace or install it via the command line:
+
+```powershell
+code --install-extension platformplc.extension
+
+```
+
+---
