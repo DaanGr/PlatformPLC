@@ -19,6 +19,20 @@ try {
   console.error("Error copying README.md:", e);
 }
 
+// Copy Logo from root
+try {
+  const rootLogo = path.resolve(__dirname, "../../../pictures/PlatformPLC.png");
+  const destLogo = path.resolve(__dirname, "PlatformPLC.png");
+  if (fs.existsSync(rootLogo)) {
+    fs.copyFileSync(rootLogo, destLogo);
+    console.log("Copied PlatformPLC.png from pictures to extension folder.");
+  } else {
+    console.warn("Warning: Logo not found at " + rootLogo);
+  }
+} catch (e) {
+  console.error("Error copying logo:", e);
+}
+
 /**
  * @type {import('esbuild').Plugin}
  */

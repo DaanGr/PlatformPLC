@@ -6,8 +6,8 @@
   - [x] Configure `package.json` for `.scl` language.
   - [x] Define Basic Tokens (Keywords, Types, Operators).
   - [x] Create TextMate grammar (`syntaxes/scl.tmLanguage.json`).
-- [ ] **SCL Snippets**
-  - [ ] Add common control structures (IF, FOR, CASE, etc.).
+- [x] **SCL Snippets**
+  - [x] Add common control structures (IF, FOR, CASE, etc.).
 - [ ] **LSP Client Setup**
   - [ ] Configure `LanguageClient` in `extension.ts`.
   - [ ] Establish process spawning for `PlatformPLC.Server`.

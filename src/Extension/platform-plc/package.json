@@ -4,6 +4,11 @@
   "publisher": "DaanGr",
   "description": "Modern PLC Engineering Tooling",
   "version": "0.2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DaanGr/PlatformPLC.git"
+  },
+  "icon": "PlatformPLC.png",
   "engines": {
     "vscode": "^1.109.0"
   },
