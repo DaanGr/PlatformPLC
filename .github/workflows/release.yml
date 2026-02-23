@@ -49,6 +49,14 @@ jobs:
           # 5. Push de wijzigingen en de nieuwe tag
           git push --follow-tags origin main
 
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Publish Server into Extension
+        run: dotnet publish src/Core/PlatformPLC.Server/PlatformPLC.Server.csproj -c Release -o src/Extension/platform-plc/server
+
       - name: Publish Extension
         env:
           VSCE_PAT: ${{ secrets.VSCE_TOKEN }}

@@ -1,0 +1,21 @@
+Siemens files are organized as follows following TIA v20.
+
+- Project/
+  - Controller/
+    - Controller.ap20.json
+    - Program blocks/
+      - Main.ob.scl
+      - Main.ob.json
+      - Motor.fb.scl
+      - Motor.fb.json
+      - Calculate.fc.scl
+      - Calculate.fc.json
+      - GlobalData.db.json
+    - PLC tags/
+      - Default.tags.json
+    - PLC data types/
+      - typeMotor.udt.json
+    - Watch and force tables/
+      - WatchTable.watch.json
+    - Technology objects/
+      - Axis_1.to.json

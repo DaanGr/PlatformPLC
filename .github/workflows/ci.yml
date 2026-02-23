@@ -25,8 +25,11 @@ jobs:
       - name: Run Backend Tests
         run: dotnet test src/PlatformPLC.slnx --no-build --configuration Release
 
+      - name: Publish Server into Extension
+        run: dotnet publish src/Core/PlatformPLC.Server/PlatformPLC.Server.csproj -c Release -o src/Extension/platform-plc/server
+
       - name: Build Extension
         working-directory: ./src/Extension/platform-plc
         run: |
           npm install
-          npm run compile
+          npm run compile:only

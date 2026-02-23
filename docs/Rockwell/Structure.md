@@ -1,0 +1,23 @@
+Allen-Bradley (Logix 5000) files are organized as follows.
+
+- Project/
+  - Controller/
+    - Controller.acd.json
+    - Global.tags.json
+    - Tasks/
+      - MainTask/
+        - MainProgram/
+          - MainRoutine.st
+          - MainRoutine.json
+          - LocalTags.tags.json
+    - Add-On Instructions/
+      - Motor.aoi.st
+      - Motor.aoi.json
+      - Calculate.aoi.st
+      - Calculate.aoi.json
+    - User-Defined Data Types/
+      - typeMotor.udt.json
+    - Trends/
+      - WatchTrend.trend.json
+    - Motion Groups/
+      - Axis_1.axis.json
