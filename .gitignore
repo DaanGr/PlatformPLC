@@ -2,6 +2,7 @@
 .DS_Store
 Thumbs.db
 *.log
+src/Extension/platform-plc/server/
 
 # VS Code
 .vscode/*

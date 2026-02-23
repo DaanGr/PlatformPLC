@@ -38,5 +38,8 @@
   "lint-staged": {
     "*.cs": "dotnet format src/PlatformPLC.slnx --include",
     "*.{ts,tsx,json,md}": "npx prettier --write"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^6.1.4"
   }
 }
