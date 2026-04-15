@@ -15,5 +15,5 @@
   },
   "git.enableSmartCommit": true,
   "git.confirmSync": false,
-  "conventionalCommits.scopes": ["extension"]
+  "conventionalCommits.scopes": ["extension", "formatting"]
 }

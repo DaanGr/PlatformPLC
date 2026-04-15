@@ -1,56 +1,52 @@
-// ==========================================
-// SAMPLE SCL FOR SYNTAX HIGHLIGHTING TEST
-// ==========================================
-
-(* Block comment test:
-   This text should be commented.
+ // ==========================================
+ // SAMPLE SCL FOR SYNTAX HIGHLIGHTING TEST
+ // ==========================================
+(*
+ddd
 *)
 
+ // Test: Keywords and Operators
+IF ("Start_Motor" = TRUE) AND (Speed > 50.0) THEN
+    "Output" := Speed * 1.5;
+ELSIF (Speed <= 10.0) THEN
+    "Output" := 0.0;
+ELSE
+    "Output" := -1.0;
+END_IF;
 
-    // Test: Keywords and Operators
-    IF ("Start_Motor" = TRUE) AND (Speed > 50.0) THEN
-        "Output" := Speed * 1.5;
-    ELSIF (Speed <= 10.0) THEN
-        "Output" := 0.0;
-    ELSE
-        "Output" := -1.0;
-    END_IF;
+ // Test: Functions and parentheses
+"Calculated_Result" := ABS(Speed);
+"Log_Text" := 'Motor has started'; // String test
 
-    // Test: Functions and parentheses
-    "Calculated_Result" := ABS(Speed);
-    "Log_Text" := 'Motor has started'; // String test
-
-    (* Test: Nested brackets and complex operators *)
-    IF ( (Speed <> 0.0) OR (Speed < 100.0) ) THEN
-        "Counter" := "Counter" + 1;
-    END_IF;
-
-
+(* Test: Nested brackets AND complex operators *)
+IF ((Speed <> 0.0) OR (Speed < 100.0)) THEN
+    "Counter" := "Counter" + 1;
+END_IF;
 
 FOR i := 1 TO 10 DO
-    // Loop test
+     // Loop test
     "Loop_Counter" := i;
 END_FOR;
 
 IF condition THEN
-    
+
 END_IF;
 
 IF condition THEN
-    
+
 ELSE
-    
+
 END_IF;
 
 CASE variable OF
     1:
-        
-ELSE:
+
+    ELSE:
         ;
-END_CASE; if
+END_CASE; IF
 
 FOR i := start TO end DO
-    
+
 END_FOR;
 REGION Description
     RETURN;
@@ -63,13 +59,13 @@ CASE #iState OF
         END_IF;
 
     20: // STARTING
-        
+
         IF #startingDone THEN
             #iState := 30; // RUNNING
         END_IF;
 
     30: // RUNNING
-        
+
         IF #cmdHold THEN
             #iState := 40; // HOLDING
         ELSIF #runningDone THEN
